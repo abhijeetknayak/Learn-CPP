@@ -25,8 +25,8 @@ namespace abhijeet1A
 		void operator +=(const Bag& bag);
 
 	private:
-		int position;
-		int top_position;
+		value_type data[CAPACITY];
+		size_type used_size;
 
 
 	protected:
