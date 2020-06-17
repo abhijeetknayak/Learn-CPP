@@ -41,6 +41,14 @@ namespace abhijeet1A
     		data[0] = new_dia;
     		retVal = true;
     	}
+    	else if (used_size == 0)
+    	{
+    		data[0] = new_dia;
+    		used_size++;
+
+    		retVal = true;
+    	}
+    	else {}
 
     	return retVal;
     }

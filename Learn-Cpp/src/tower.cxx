@@ -26,7 +26,7 @@ namespace abhijeet1A
 
     Peg::size_type Tower::top_diameter(int peg_number) const
     {
-    	if (peg_number < 3)
+    	if (peg_number <= 3)
     	{
     		return pegs[peg_number - 1].data[0];
     	}
@@ -35,7 +35,7 @@ namespace abhijeet1A
 
     void Tower::move(int start_peg, int end_peg)
     {
-    	if (start_peg < 3 && end_peg < 3)
+    	if (start_peg <= 3 && end_peg <= 3)
     	{
     		/* Valid Pegs */
     		Peg::size_type value = pegs[start_peg - 1].remove_top_ring();

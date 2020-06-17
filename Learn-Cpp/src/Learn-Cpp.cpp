@@ -163,7 +163,24 @@ void tower_functions(void)
 	cout << tower.many_rings(1) << endl;
 
 	tower.move(1, 2);
-	cout << tower.many_rings(1) << " " << tower.many_rings(2) << endl;
-
 	cout << tower;
+
+	tower.move(1, 3);
+	cout << tower;
+
+	tower.move(2, 3);
+	cout << tower;
+
+	tower.move(1, 2);
+	cout << tower;
+
+	tower.move(3, 1);
+	cout << tower;
+
+	tower.move(3, 2);
+	cout << tower;
+
+	tower.move(1, 2);
+	cout << tower;
+
 }
