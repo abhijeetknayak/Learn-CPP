@@ -68,6 +68,10 @@ int main()
 
 	sequence_functions();
 
+	peg_functions();
+
+	tower_functions();
+
 }
 
 void bag_functions(void)
@@ -129,4 +133,37 @@ void sequence_functions(void)
 void multiset_functions(void)
 {
 
+}
+
+void peg_functions(void)
+{
+	Peg peg(10);
+	cout << peg;
+
+	peg.remove_top_ring();
+	cout << peg;
+
+	peg.remove_top_ring();
+	peg.remove_top_ring();
+	peg.remove_top_ring();
+	peg.remove_top_ring();
+	peg.remove_top_ring();
+
+	peg.insert_new_ring(1);
+	cout << peg;
+
+	peg.insert_new_ring(4);
+	cout << peg;
+}
+
+void tower_functions(void)
+{
+	Tower tower(3);
+
+	cout << tower.many_rings(1) << endl;
+
+	tower.move(1, 2);
+	cout << tower.many_rings(1) << " " << tower.many_rings(2) << endl;
+
+	cout << tower;
 }
