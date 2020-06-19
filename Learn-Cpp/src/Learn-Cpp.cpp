@@ -1,5 +1,7 @@
 #include <iostream>
 #include <utility>
+#include <set>
+#include <iterator>
 #include "math.h"
 
 #include "throttle.h"
@@ -68,6 +70,8 @@ int main()
 
 	sequence_functions();
 
+	multiset_functions();
+
 	peg_functions();
 
 	tower_functions();
@@ -132,7 +136,51 @@ void sequence_functions(void)
 
 void multiset_functions(void)
 {
+	multiset<int>::iterator iter;
+	multiset <int> first;
+	first.insert(30);
+	first.insert(3);
+	first.insert(12);
+	first.insert(23);
+	first.insert(34);
+	first.insert(33);
+	first.insert(31);
+	first.insert(30);
+	first.insert(30);
 
+	for(iter = first.begin(); iter != first.end(); iter++)
+	{
+		/* Printing all elements in the multiset */
+		cout << *iter << " ";
+	}
+	cout << endl;
+
+	iter = first.insert(25);
+	for(; iter != first.end(); iter++)
+	{
+		/* Printing all elements in the multiset */
+		cout << *iter << " ";
+	}
+	cout << endl;
+
+	iter = first.find(12);
+	for(; iter != first.end(); iter++)
+	{
+		/* Printing all elements in the multiset */
+		cout << *iter << " ";
+	}
+	cout << endl;
+
+	iter = first.find(33);
+	if (iter != first.end())
+	{
+		first.erase(iter);
+	}
+	for(iter = first.begin(); iter != first.end(); iter++)
+	{
+		/* Printing all elements in the multiset */
+		cout << *iter << " ";
+	}
 }
 
 void peg_functions(void)
