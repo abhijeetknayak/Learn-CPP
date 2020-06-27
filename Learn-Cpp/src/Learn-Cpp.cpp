@@ -3,14 +3,7 @@
 #include <set>
 #include <iterator>
 #include "math.h"
-
-#include "throttle.h"
-#include "circle.h"
-#include "point.h"
-#include "bag.h"
-#include "sequence.h"
 #include "Learn-Cpp.h"
-#include "dynademo.h"
 
 
 using namespace std;
@@ -79,6 +72,8 @@ int main()
 	tower_functions();
 
 	pointer_functions();
+
+	dynamic_bag_functions();
 
 }
 
@@ -247,4 +242,37 @@ void pointer_functions(void)
 
 	compare(p, n, 3.2);
 	cout << "Average : " << average(p, n) << endl;
+}
+
+void dynamic_bag_functions(void)
+{
+	/* Bag of capacity 10 */
+	BagDyn bag1(10);
+
+	/* Bag of capacity 5 */
+	BagDyn bag2(5);
+
+	bag1.insert(5);
+	bag1.insert(23);
+	bag1.insert(45);
+	bag1.insert(66);
+	bag1.insert(12);
+
+	bag2.insert(5);
+	bag2.insert(15);
+	bag2.insert(52);
+	bag2.insert(53);
+	bag2.insert(85);
+
+	cout << "Bag1 size and capacity are : " << bag1.size() << ", " << bag1.bag_capacity() << endl;
+	cout << "Bag2 size and capacity are : " << bag2.size() << ", " << bag2.bag_capacity() << endl;
+
+	bag1 += bag2;
+
+	/* Capacity of Bag1 should remain unchanged */
+	cout << "Bag1 size and capacity are : " << bag1.size() << ", " << bag1.bag_capacity() << endl;
+
+	BagDyn bag3 = bag1 + bag2;
+	cout << "Bag3 size and capacity are : " << bag3.size() << ", " << bag3.bag_capacity() << endl;
+
 }
