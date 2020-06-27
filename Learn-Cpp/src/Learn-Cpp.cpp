@@ -10,6 +10,8 @@
 #include "bag.h"
 #include "sequence.h"
 #include "Learn-Cpp.h"
+#include "dynademo.h"
+
 
 using namespace std;
 using namespace abhijeet1A;
@@ -75,6 +77,8 @@ int main()
 	peg_functions();
 
 	tower_functions();
+
+	pointer_functions();
 
 }
 
@@ -231,4 +235,16 @@ void tower_functions(void)
 	tower.move(1, 2);
 	cout << tower;
 
+}
+
+void pointer_functions(void)
+{
+	double_ptr p;
+	size_t n = 10;
+
+	allocate_double_array(p, n);
+	fill_array(p, n);
+
+	compare(p, n, 3.2);
+	cout << "Average : " << average(p, n) << endl;
 }

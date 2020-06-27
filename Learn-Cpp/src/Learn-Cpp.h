@@ -11,6 +11,7 @@ void sequence_functions(void);
 void multiset_functions(void);
 void peg_functions(void);
 void tower_functions(void);
+void pointer_functions(void);
 
 
 
