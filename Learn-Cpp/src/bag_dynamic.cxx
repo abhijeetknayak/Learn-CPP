@@ -1,0 +1,120 @@
+#include <iostream>
+#include <algorithm>
+#include "bag_dynamic.h"
+
+using namespace std;
+
+namespace abhijeet1A
+{
+    const BagDyn::size_type BagDyn::DEFAULT_CAPACITY;
+    BagDyn::BagDyn(size_type cap)
+    {
+    	used_size = 0;
+    	capacity = cap;
+    	data = new value_type[cap];
+    }
+
+    BagDyn::size_type BagDyn::size(void) const
+    {
+    	return used_size;
+    }
+
+    BagDyn::size_type BagDyn::bag_capacity(void) const
+    {
+    	return capacity;
+    }
+
+    BagDyn::size_type BagDyn::count(const value_type& target) const
+    {
+    	size_type answer = 0, i = 0;
+    	for (i = 0; i < used_size; i++)
+    	{
+    		if (data[i] == target)
+    		{
+    			answer++;
+    		}
+    	}
+    	return answer;
+    }
+
+    void BagDyn::insert(const value_type& entry)
+    {
+       	if (used_size < capacity)
+    	{
+    		data[used_size] = entry;
+    	}
+    	used_size++;
+    }
+
+    bool BagDyn::erase_one(const value_type& target)
+    {
+    	bool retVal = false;
+    	size_type i;
+    	for (i = 0; ((i < used_size) && (retVal != true)); i++)
+    	{
+    		if (data[i] == target)
+    		{
+    			data[i] = data[used_size - 1];
+    			used_size--;
+    			retVal = true;
+    		}
+    	}
+    	return retVal;
+    }
+
+    BagDyn::size_type BagDyn::erase(const value_type& target)
+    {
+    	size_type i = 0, count = 0;
+
+    	for (i = used_size - 1; ((i >= 0) && (i < capacity)); i--)
+    	{
+    		if (data[i] == target)
+    		{
+    			count++;
+    			if (i != used_size - 1)
+    			{
+    				/* Moving the right element into the target position */
+    				data[i] = data[i + 1];
+    			}
+    		}
+    	}
+    	used_size -= count;
+    	return count;
+    }
+
+    void BagDyn::operator +=(const BagDyn& bag)
+	{
+//    	size_type i, total_size, j = 0;
+//    	if (used_size + bag.used_size <= CAPACITY)
+//    	{
+//    		total_size = used_size + bag.used_size;
+//    		for (i = used_size; i < total_size; i++)
+//    		{
+//    			data[i] = bag.data[j];
+//    			j++;
+//    		}
+//    		used_size = total_size;
+//    	}
+#if 1
+    	if(used_size + bag.size() <= capacity)
+    	{
+    		copy(bag.data, bag.data + bag.used_size, data + used_size);
+    		used_size += bag.used_size;
+    	}
+
+#endif
+	}
+
+    BagDyn operator +(const BagDyn& bag1, const BagDyn& bag2)
+    {
+    	BagDyn result(bag1.bag_capacity() + bag2.bag_capacity());
+
+		result += bag1;
+		result += bag2;
+
+    	return result;
+    }
+
+
+
+}
