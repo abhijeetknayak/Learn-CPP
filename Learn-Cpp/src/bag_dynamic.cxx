@@ -14,6 +14,16 @@ namespace abhijeet1A
     	data = new value_type[cap];
     }
 
+    BagDyn::BagDyn(const BagDyn& sourceBag)
+    {
+    	/* Copy constructor : During new bag creation */
+    	capacity = sourceBag.capacity;
+    	used_size = sourceBag.used_size;
+    	data = new value_type[capacity];
+
+    	copy(sourceBag.data, sourceBag.data + sourceBag.used_size, data);
+    }
+
     BagDyn::size_type BagDyn::size(void) const
     {
     	return used_size;
@@ -80,6 +90,11 @@ namespace abhijeet1A
     	}
     	used_size -= count;
     	return count;
+    }
+
+    void BagDyn::reserve(void)
+    {
+
     }
 
     void BagDyn::operator +=(const BagDyn& bag)
