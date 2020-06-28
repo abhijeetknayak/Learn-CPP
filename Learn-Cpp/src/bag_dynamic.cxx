@@ -105,7 +105,21 @@ namespace abhijeet1A
 
     void BagDyn::operator =(const BagDyn& sourceBag)
     {
-
+    	value_type * new_data;
+    	if (this == &sourceBag)
+    	{
+    		/* This source object is the same as the object that activates the member function */
+    		return;
+    	}
+    	if (capacity != sourceBag.capacity)
+    	{
+    		delete [] data;
+    		new_data = new value_type[sourceBag.capacity];
+    		data = new_data;
+    		capacity = sourceBag.capacity;
+    	}
+    	used_size = sourceBag.used_size;
+    	copy(sourceBag.data, sourceBag.data + sourceBag.used_size, data);
     }
 
     void BagDyn::operator +=(const BagDyn& bag)
