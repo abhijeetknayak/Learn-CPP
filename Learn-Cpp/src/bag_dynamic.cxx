@@ -24,6 +24,12 @@ namespace abhijeet1A
     	copy(sourceBag.data, sourceBag.data + sourceBag.used_size, data);
     }
 
+    BagDyn::~BagDyn()
+    {
+    	/* Destructor. Clearing dynamically allocated array */
+    	delete [] data;
+    }
+
     BagDyn::size_type BagDyn::size(void) const
     {
     	return used_size;
@@ -93,6 +99,11 @@ namespace abhijeet1A
     }
 
     void BagDyn::reserve(void)
+    {
+
+    }
+
+    void BagDyn::operator =(const BagDyn& sourceBag)
     {
 
     }
