@@ -14,6 +14,8 @@ namespace abhijeet1A
 
 		/* Constructor */
 		BagDyn(size_type cap = DEFAULT_CAPACITY);
+		~BagDyn();
+		BagDyn(const BagDyn& bag); /* Copy Constructor */
 
 		/* Member Functions */
 		size_type size() const;
@@ -22,6 +24,9 @@ namespace abhijeet1A
 		size_type count(const value_type& target) const;
 		bool erase_one(const value_type& target);
 		size_type erase(const value_type& target);
+		void reserve(void);
+		void operator =(const BagDyn& sourceBag);
+
 
 		void operator +=(const BagDyn& bag);
 
