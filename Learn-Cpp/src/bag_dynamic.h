@@ -24,7 +24,7 @@ namespace abhijeet1A
 		size_type count(const value_type& target) const;
 		bool erase_one(const value_type& target);
 		size_type erase(const value_type& target);
-		void reserve(void);
+		void reserve(size_type new_capacity);
 		void operator =(const BagDyn& sourceBag);
 
 

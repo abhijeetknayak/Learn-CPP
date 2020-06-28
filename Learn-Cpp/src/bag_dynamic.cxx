@@ -98,8 +98,19 @@ namespace abhijeet1A
     	return count;
     }
 
-    void BagDyn::reserve(void)
+    void BagDyn::reserve(size_type new_capacity)
     {
+    	value_type * new_data;
+    	if (new_capacity > capacity)
+    	{
+    		/* Need to reserve a larger capacity only if the new_capacity is greater than the current capacity.
+    		 * First copy data into the new location, and then delete the old allocations */
+    		new_data = new value_type[new_capacity];
+    		copy(data, data + used_size, new_data);
+    		delete [] data;
+    		data = new_data;
+    		capacity = new_capacity;
+    	}
 
     }
 
