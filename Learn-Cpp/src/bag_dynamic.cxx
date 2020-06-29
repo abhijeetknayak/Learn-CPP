@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <math.h>
 #include "bag_dynamic.h"
 
 using namespace std;
@@ -53,9 +54,9 @@ namespace abhijeet1A
     	return answer;
     }
 
-    void BagDyn::insert(const value_type& entry)
+    void BagDyn::insert(const value_type& entry, const size_type& multiple)
     {
-       	if (used_size == capacity) { reserve(used_size + 1); }
+       	if (used_size == capacity) { reserve(used_size + 1, multiple); }
 
        	data[used_size] = entry;
     	used_size++;
@@ -97,10 +98,22 @@ namespace abhijeet1A
     	return count;
     }
 
-    void BagDyn::reserve(size_type new_capacity)
+    void BagDyn::reserve(size_type new_capacity, const size_type& multiple)
     {
+    	/* The value of multiple can be used to change the amount of new memory that is allocated.
+    	 * Think of this in terms of extra percentage points. Defaults to 0 */
     	value_type * new_data;
+    	if (new_capacity == capacity)
+    	{
+    		/* Nothing for us to do, Return */
+    		return;
+    	}
+//    	if (new_capacity < capacity) { new_capacity = used_size; }
+
+    	/* If we want to increase bag size by 10% at every insert to make it more efficient */
     	if (new_capacity < capacity) { new_capacity = used_size; }
+
+    	new_capacity = ceil(new_capacity * (1.0f + multiple / 100.0f));
 
 		/* Need to reserve a larger capacity only if the new_capacity is greater than the current capacity.
 		 * First copy data into the new location, and then delete the old allocations */

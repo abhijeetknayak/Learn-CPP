@@ -20,11 +20,11 @@ namespace abhijeet1A
 		/* Member Functions */
 		size_type size() const;
 		size_type bag_capacity(void) const;
-		void insert(const value_type& entry);
+		void insert(const value_type& entry, const size_type& multiple = 0);
 		size_type count(const value_type& target) const;
 		bool erase_one(const value_type& target);
 		size_type erase(const value_type& target);
-		void reserve(size_type new_capacity);
+		void reserve(size_type new_capacity, const size_type& multiple = 0);
 		void operator =(const BagDyn& sourceBag);
 
 
