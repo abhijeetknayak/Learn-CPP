@@ -55,10 +55,9 @@ namespace abhijeet1A
 
     void BagDyn::insert(const value_type& entry)
     {
-       	if (used_size < capacity)
-    	{
-    		data[used_size] = entry;
-    	}
+       	if (used_size == capacity) { reserve(used_size + 1); }
+
+       	data[used_size] = entry;
     	used_size++;
     }
 
@@ -101,17 +100,15 @@ namespace abhijeet1A
     void BagDyn::reserve(size_type new_capacity)
     {
     	value_type * new_data;
-    	if (new_capacity > capacity)
-    	{
-    		/* Need to reserve a larger capacity only if the new_capacity is greater than the current capacity.
-    		 * First copy data into the new location, and then delete the old allocations */
-    		new_data = new value_type[new_capacity];
-    		copy(data, data + used_size, new_data);
-    		delete [] data;
-    		data = new_data;
-    		capacity = new_capacity;
-    	}
+    	if (new_capacity < capacity) { new_capacity = used_size; }
 
+		/* Need to reserve a larger capacity only if the new_capacity is greater than the current capacity.
+		 * First copy data into the new location, and then delete the old allocations */
+		new_data = new value_type[new_capacity];
+		copy(data, data + used_size, new_data);
+		delete [] data;
+		data = new_data;
+		capacity = new_capacity;
     }
 
     void BagDyn::operator =(const BagDyn& sourceBag)
@@ -147,11 +144,14 @@ namespace abhijeet1A
 //    		used_size = total_size;
 //    	}
 #if 1
-    	if(used_size + bag.size() <= capacity)
+    	if(used_size + bag.size() > capacity)
     	{
-    		copy(bag.data, bag.data + bag.used_size, data + used_size);
-    		used_size += bag.used_size;
+    		/* Reserve new memory */
+    		reserve(used_size + bag.used_size);
     	}
+
+		copy(bag.data, bag.data + bag.used_size, data + used_size);
+		used_size += bag.used_size;
 
 #endif
 	}
