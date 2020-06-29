@@ -71,7 +71,7 @@ int main()
 
 	tower_functions();
 
-	pointer_functions();
+//	pointer_functions();
 
 	dynamic_bag_functions();
 
@@ -275,4 +275,19 @@ void dynamic_bag_functions(void)
 	BagDyn bag3 = bag1 + bag2;
 	cout << "Bag3 size and capacity are : " << bag3.size() << ", " << bag3.bag_capacity() << endl;
 
+	/* Bag2 already full, this should allocate more memory to store the new item */
+	bag2.insert(32);
+	cout << "Bag2 size and capacity are : " << bag2.size() << ", " << bag2.bag_capacity() << endl;
+
+	/* Bag2 already full, this should allocate more memory to store the new item. The size of the bag is increased by 10% more(ceil) */
+	bag2.insert(32, 10);
+	cout << "Bag2 size and capacity are : " << bag2.size() << ", " << bag2.bag_capacity() << endl;
+
+	/* Fill up bag */
+	bag2.insert(8);
+
+	/* Bag2 already full, this should allocate more memory to store the new item. The size of the bag is increased by 100% more(ceil).
+	 * Effectively, capacity of the bag is doubled, thus reducing the number of reserve function calls! */
+	bag2.insert(45, 100);
+	cout << "Bag2 size and capacity are : " << bag2.size() << ", " << bag2.bag_capacity() << endl;
 }
