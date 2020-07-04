@@ -10,6 +10,7 @@
 #include "circle.h"
 #include "point.h"
 #include "dynademo.h"
+#include "string_operations.h"
 
 void bag_functions(void);
 void sequence_functions(void);
@@ -18,6 +19,7 @@ void peg_functions(void);
 void tower_functions(void);
 void pointer_functions(void);
 void dynamic_bag_functions(void);
+void string_functions(void);
 
 
 

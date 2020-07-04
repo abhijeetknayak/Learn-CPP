@@ -75,6 +75,8 @@ int main()
 
 	dynamic_bag_functions();
 
+	string_functions();
+
 }
 
 void bag_functions(void)
@@ -290,4 +292,20 @@ void dynamic_bag_functions(void)
 	 * Effectively, capacity of the bag is doubled, thus reducing the number of reserve function calls! */
 	bag2.insert(45, 100);
 	cout << "Bag2 size and capacity are : " << bag2.size() << ", " << bag2.bag_capacity() << endl;
+}
+
+void string_functions(void)
+{
+	String a("Abhijeet");
+	cout << a.length() << endl;
+	cout << a[5] << endl;
+//	String b("is");
+	char b [] = "is";
+	a += b;
+
+	for (size_t i = 1; i <= a.length(); i++)
+	{
+		cout << a[i];
+	}
+	cout << endl;
 }
