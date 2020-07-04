@@ -17,7 +17,6 @@ namespace abhijeet1A
 		/* Member Functions */
 		char * strcpy(char target [], char source []);
 		char * strcat(char target [], char source []);
-		size_type strlen(const char source []);
 
 		/* int return */
 		int strcmp(char string1 [], char string2 []);
@@ -37,10 +36,12 @@ namespace abhijeet1A
 	protected:
 	};
 
-	String operator +(char str1 [], char str2 []);
+	String operator +(String str1, String str2);
 	std::istream& operator >>(std::istream& ins, String& target);
 	std::ostream& operator <<(std::ostream& out, String& output);
 	std::istream& getline(std::istream& ins, String& target, char delimiter = '\n');
+	String::size_type string_length(const char source []);
+}
 
 
 #endif
