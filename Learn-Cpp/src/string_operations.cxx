@@ -32,17 +32,27 @@ namespace abhijeet1A
 
 	char * strcpy(char target [], char source [])
 	{
+		//TODO
+		char * new_data = new char[1];
 
+		return new_data;
 	}
 
 	char * strcat(char target [], char source [])
 	{
+		//TODO
+		char * new_data = new char[1];
+
+		return new_data;
 
 	}
 
 	/* int return */
 	int strcmp(char string1 [], char string2 [])
 	{
+		//TODO
+		int k = 0;
+		return k;
 
 	}
 
@@ -72,13 +82,62 @@ namespace abhijeet1A
 
 	void String::operator +=(char addend)
 	{
+		allocated += 1;
 
+		char * new_data = new char[allocated];
+		copy(data, data + str_length, new_data);
+		new_data[str_length] = addend;
 
+		str_length += 1;
+		new_data[str_length] = '\0';
+
+		delete [] data;
+		data = new_data;
+	}
+
+	void String::operator +=(const String& str1)
+	{
+		allocated += str1.length();
+
+		char * new_data = new char[allocated];
+		copy(data, data + str_length, new_data);
+		copy(str1.data, str1.data + str1.str_length + 1, new_data + str_length);
+
+		delete [] data;
+		data = new_data;
+		str_length += str1.str_length;
+	}
+
+	void String::operator =(const String& str1)
+	{
+		char * new_data;
+		if (this == &str1)
+		{
+			return;
+		}
+
+		str_length = str1.length();
+		allocated = str1.allocated;
+		new_data = new char[allocated];
+		copy(str1.data, str1.data + str1.allocated, new_data);
+
+		delete [] data;
+		data = new_data;
+	}
+
+	char * String::getData(void) const
+	{
+		return data;
 	}
 
 	void String::reserve(size_type new_capacity)
 	{
+		char * new_data;
+		if (new_capacity <= allocated) { return; }
 
+		new_data = new char[new_capacity];
+		copy(data, data + allocated, new_data);
+		allocated = new_capacity;
 	}
 
 	String::size_type String::length(void) const
@@ -86,29 +145,31 @@ namespace abhijeet1A
 		return str_length;
 	}
 
-	String operator +(String str1, String str2)
+	String operator +(const String& str1, const String& str2)
 	{
 		String result;
 
+		result += str1;
+		result += str2;
 
 		return result;
 	}
+
 	std::istream& operator >>(std::istream& ins, String& target)
 	{
-
-
+		//TODO
 		return ins;
 	}
+
 	std::ostream& operator <<(std::ostream& out, String& output)
 	{
-
-
+		out << output.getData() << endl;
 		return out;
 	}
+
 	std::istream& getline(std::istream& ins, String& target, char delimiter)
 	{
-
-
+		//TODO
 		return ins;
 	}
 }
