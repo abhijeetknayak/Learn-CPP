@@ -296,16 +296,23 @@ void dynamic_bag_functions(void)
 
 void string_functions(void)
 {
-	String a("Abhijeet");
+	String a("Hello");
+
 	cout << a.length() << endl;
 	cout << a[5] << endl;
-//	String b("is");
-	char b [] = "is";
+
+	char b [] = "World";
 	a += b;
 
-	for (size_t i = 1; i <= a.length(); i++)
-	{
-		cout << a[i];
-	}
-	cout << endl;
+	char c = '!';
+	a += c;
+
+	cout << a;
+
+	String world("World!");
+
+	String res;
+	res = a + world;
+
+	cout << res;
 }
