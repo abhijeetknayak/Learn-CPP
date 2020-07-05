@@ -77,6 +77,8 @@ int main()
 
 	string_functions();
 
+	polynomial_functions();
+
 }
 
 void bag_functions(void)
@@ -307,7 +309,7 @@ void string_functions(void)
 	char c = '!';
 	a += c;
 
-	cout << a;
+	cout << a << endl;
 
 	String world("World!");
 
@@ -315,8 +317,27 @@ void string_functions(void)
 	res = a + world;
 
 	/* Chaining the output operator */
-	cout << res << a << res;
+	cout << res << a << res << endl;
 
 //	cin >> res;
 //	cout << res;
+}
+
+void polynomial_functions(void)
+{
+	Polynomial p1(1.0);
+	p1.assign_coef(3.0, 1);
+	p1.assign_coef(2.0, 2);
+	p1.assign_coef(3.0, 3);
+	p1.assign_coef(0.0, 4);
+	p1.assign_coef(5.0, 5);
+	p1.add_to_coef(1.0, 5);
+
+	cout << p1;
+
+	cout << p1.eval(1.0) << endl;
+	cout << p1(2.0) << endl;
+
+	cout << "Next Non-Zero coefficient is at degree : " << p1.next_term(3) << endl;
+
 }
