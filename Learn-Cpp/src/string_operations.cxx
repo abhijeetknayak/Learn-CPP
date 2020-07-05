@@ -158,6 +158,10 @@ namespace abhijeet1A
 	std::istream& operator >>(std::istream& ins, String& target)
 	{
 		//TODO
+		while(ins && isspace(ins.peek()))
+			ins.ignore();
+		while(ins && !isspace(ins.peek()) && !ins.eof())
+			target += ins.get();
 		return ins;
 	}
 

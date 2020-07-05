@@ -314,5 +314,9 @@ void string_functions(void)
 	String res;
 	res = a + world;
 
-	cout << res;
+	/* Chaining the output operator */
+	cout << res << a << res;
+
+//	cin >> res;
+//	cout << res;
 }
