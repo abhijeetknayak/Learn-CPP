@@ -167,7 +167,7 @@ namespace abhijeet1A
 
 	std::ostream& operator <<(std::ostream& out, String& output)
 	{
-		out << output.getData() << endl;
+		out << output.getData();
 		return out;
 	}
 
