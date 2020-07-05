@@ -12,6 +12,11 @@ namespace abhijeet1A
 
 		/* Constructor */
 		String(const char str [] = "");
+
+		/* Copy Constructor */
+		String(String& str1);
+
+		/* Destructor */
 		~String();
 
 		/* Member Functions */
@@ -24,8 +29,12 @@ namespace abhijeet1A
 		char operator [](size_type position) const;
 		void operator +=(char addend []);
 		void operator +=(char addend);
+		void operator +=(const String& str1);
+		void operator =(const String& str1);
 		void reserve(size_type new_capacity);
 		size_type length(void) const;
+
+		char * getData() const;
 
 	private:
 		char * data;
@@ -36,7 +45,7 @@ namespace abhijeet1A
 	protected:
 	};
 
-	String operator +(String str1, String str2);
+	String operator +(const String& str1, const String& str2);
 	std::istream& operator >>(std::istream& ins, String& target);
 	std::ostream& operator <<(std::ostream& out, String& output);
 	std::istream& getline(std::istream& ins, String& target, char delimiter = '\n');
