@@ -1,4 +1,4 @@
-#include "LinkedList.h"
+#include "Node.h"
 
 Node::Node(const value_type& value, Node * link)
 {
